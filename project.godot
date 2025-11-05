@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 project/assembly_name="jeux_session"
 
+[physics]
+
+common/physics_ticks_per_second=140
+common/max_physics_steps_per_frame=30
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0ns8oq0gf3g8"]
+[gd_scene load_steps=6 format=3 uid="uid://d0ns8oq0gf3g8"]
 
 [ext_resource type="Texture2D" uid="uid://b45f62273aljo" path="res://kenney_pixel-vehicle-pack/PNG/Cars/buggy.png" id="1_7822p"]
 [ext_resource type="Script" uid="uid://dj7ae2udi0cx3" path="res://car.gd" id="1_uoj53"]
+[ext_resource type="Script" uid="uid://bvwkdn1de21fs" path="res://camera_2d.gd" id="3_k61xc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uoj53"]
+bounce = 0.31
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k61xc"]
 size = Vector2(31, 22)
@@ -24,3 +26,9 @@ texture = ExtResource("1_7822p")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 28)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("3_k61xc")

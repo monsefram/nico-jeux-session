@@ -6,21 +6,21 @@
 
 [sub_resource type="Curve2D" id="Curve2D_1bvp3"]
 _data = {
-"points": PackedVector2Array(-215.622, -6.655, 215.622, 6.655, 272, 1, -85.184, 17.303, 85.184, -17.303, 484, -125, 805.255, 9.317, -805.255, -9.317, 67, 5, -51.909, 215.622, 51.909, -215.622, 749, -268)
+"points": PackedVector2Array(-215.622, -6.655, 215.622, 6.655, 272, 1, -85.184, 17.303, 85.184, -17.303, 484, -125)
 }
-point_count = 4
+point_count = 2
 
 [node name="Main" type="Node2D"]
 
 [node name="Track" type="Line2D" parent="."]
 position = Vector2(-36, -1)
-points = PackedVector2Array(-136, -10, -98, -19, -58, -26, -22, -31, 19, -38, 58, -43, 99, -50, 138, -55, 177, -60, 215, -69, 255, -74, 295, -82, 335, -88, 370, -98, 409, -100, 455, -111, 716, -191)
+points = PackedVector2Array(0, 0, 337, 2)
 width = 20.0
 default_color = Color(9.8668e-07, 0.58212, 0.153537, 1)
 script = ExtResource("1_h2yge")
 
-[node name="TrackCollision" type="Node2D" parent="Track"]
-position = Vector2(35, 1)
+[node name="TrackCollision" type="Node2D" parent="."]
+position = Vector2(-1, 0)
 script = ExtResource("1_0xm2m")
 
 [node name="Camera2D" type="Camera2D" parent="."]
