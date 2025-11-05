@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://s3ef4dtrqadp"]
+
+[ext_resource type="Script" uid="uid://bj3b0qv5uofbe" path="res://track_collision.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://d0ns8oq0gf3g8" path="res://car.tscn" id="1_ig7tw"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Track" type="Line2D" parent="."]
+position = Vector2(-1, -1)
+points = PackedVector2Array(-38, -44, 69, -45, 125, -48, 173, -44, 246, -48, 288, -44, 298, -44)
+width = 20.0
+default_color = Color(9.8668e-07, 0.58212, 0.153537, 1)
+
+[node name="TrackCollision" type="Node2D" parent="."]
+position = Vector2(-1, 0)
+script = ExtResource("1_0xm2m")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="car" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(105, -99)
+mass = 1.5
