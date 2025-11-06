@@ -1,34 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0ns8oq0gf3g8"]
+[gd_scene load_steps=5 format=3 uid="uid://d0ns8oq0gf3g8"]
 
-[ext_resource type="Texture2D" uid="uid://b45f62273aljo" path="res://kenney_pixel-vehicle-pack/PNG/Cars/buggy.png" id="1_7822p"]
-[ext_resource type="Script" uid="uid://dj7ae2udi0cx3" path="res://car.gd" id="1_uoj53"]
-[ext_resource type="Script" uid="uid://bvwkdn1de21fs" path="res://camera_2d.gd" id="3_k61xc"]
+[ext_resource type="Script" uid="uid://cnlfujplt528x" path="res://car.gd" id="1_uoj53"]
+[ext_resource type="PackedScene" uid="uid://bky3sshspxh7b" path="res://wheel.tscn" id="2_06lh1"]
+[ext_resource type="Texture2D" uid="uid://bn80p2n45p1iv" path="res://Images/Car/RedCar.png" id="2_k61xc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uoj53"]
 bounce = 0.31
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k61xc"]
-size = Vector2(31, 22)
 
 [node name="car" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_uoj53")
 script = ExtResource("1_uoj53")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.5, 4)
-shape = SubResource("RectangleShape2D_k61xc")
+[node name="wheel_b" parent="." instance=ExtResource("2_06lh1")]
+position = Vector2(-200, 137)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="wheel_b"]
+node_a = NodePath("..")
+node_b = NodePath("../..")
+
+[node name="wheel_f" parent="." instance=ExtResource("2_06lh1")]
+position = Vector2(149, 135)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="wheel_f"]
+node_a = NodePath("..")
+node_b = NodePath("../..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(3.75, 3.5)
 scale = Vector2(1.32609, 1.5)
-texture = ExtResource("1_7822p")
+texture = ExtResource("2_k61xc")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 28)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-script = ExtResource("3_k61xc")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(5, -2)
+polygon = PackedVector2Array(-297, -62, -307, 148, -252, 151, 280, 137, 274, -8, 2, -80)

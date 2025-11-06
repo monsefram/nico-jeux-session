@@ -15,16 +15,22 @@ run/main_scene="uid://s3ef4dtrqadp"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [dotnet]
 
 project/assembly_name="jeux_session"
 
 [physics]
 
-common/physics_ticks_per_second=140
+common/physics_ticks_per_second=300
 common/max_physics_steps_per_frame=30
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.159302, 0.3115, 0.454859, 1)
