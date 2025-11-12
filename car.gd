@@ -4,11 +4,11 @@ var wheels: Array[RigidBody2D] = []
 
 @export var speed: float = 8000.0
 @export var max_speed: float = 20.0      # rad/s pour la roue
-@export var body_torque: float = 1000.0  # couple appliqué au châssis en avant
-@export var body_torque_rev: float = 1000.0  # couple pour arrière
+@export var body_torque: float = 900.0  # couple appliqué au châssis en avant
+@export var body_torque_rev: float = 1500.0  # couple pour arrière
 
 # ---- Respawn ----
-@export var fall_limit_y: float = 2400.0    # quand la voiture tombe trop bas
+@export var fall_limit_y: float = 3000.0    # quand la voiture tombe trop bas
 var spawn_position: Vector2
 var spawn_rotation: float = 0.0
 

@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cnlfujplt528x" path="res://car.gd" id="1_uoj53"]
 [ext_resource type="PackedScene" uid="uid://bky3sshspxh7b" path="res://wheel.tscn" id="2_06lh1"]
-[ext_resource type="Texture2D" uid="uid://bn80p2n45p1iv" path="res://Images/Car/RedCar.png" id="2_k61xc"]
+[ext_resource type="Texture2D" uid="uid://bn80p2n45p1iv" path="res://texture/Images/Car/RedCar.png" id="2_k61xc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uoj53"]
-bounce = 0.31
+bounce = 0.37
 
 [node name="car" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_uoj53")
+gravity_scale = 0.736
 script = ExtResource("1_uoj53")
 
 [node name="wheel_b" parent="." instance=ExtResource("2_06lh1")]
