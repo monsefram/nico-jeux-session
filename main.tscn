@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://d218yx0d1ilsn" path="res://addons/rmsmartshape/normal_range.gd" id="10_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://fmabk6ntsujn" path="res://coin.tscn" id="12_dg77c"]
 [ext_resource type="Script" uid="uid://crt6fcs8qip6w" path="res://HUD.gd" id="20_82xsv"]
+[ext_resource type="PackedScene" uid="uid://b5imclpco5vwi" path="res://speedometer.tscn" id="21_getpj"]
 
 [sub_resource type="Resource" id="Resource_vivmo"]
 script = ExtResource("3_kek77")
@@ -352,8 +353,6 @@ fill_texture_angle_offset = 0.0
 fill_mesh_offset = 0.0
 render_offset = 0.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82xsv"]
-
 [node name="Main" type="Node2D" groups=["wheel"]]
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -448,15 +447,4 @@ position = Vector2(12857, 2756)
 [node name="HUD" type="CanvasLayer" parent="." groups=["hud"]]
 script = ExtResource("20_82xsv")
 
-[node name="SpeedLabel" type="Label" parent="HUD"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 29.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0.898039, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0.898039, 1, 0.266667)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxEmpty_82xsv")
+[node name="Speedometer" parent="HUD" instance=ExtResource("21_getpj")]

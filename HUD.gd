@@ -1,8 +1,6 @@
 extends CanvasLayer
 
-@onready var label: Label = $SpeedLabel
-var last_speed := 0.0
+@onready var speed_label: Label = $Speedometer/SpeedLabel
 
 func update_speed(v: float) -> void:
-	# Mise à jour du texte
-	label.text = "%.0f km/h" % v
+	speed_label.text = "%d km/h" % v

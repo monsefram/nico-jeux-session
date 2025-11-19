@@ -52,10 +52,15 @@ func _physics_process(delta: float) -> void:
 
 	# ---- CALCUL VITESSE (bien placé ici) ----
 	var speed_mps = linear_velocity.length()
-	var speed_kmh = speed_mps * 3.6 / 100
+	var speed_kmh = speed_mps * 0.03
 
 	if hud:
-		hud.update_speed(speed_kmh)
+		var speedometer = hud.get_node("Speedometer")
+		print("UPDATE SPEED ->", speed_kmh)
+		speedometer.update_speed(speed_kmh)
+		
+
+
 
 
 
