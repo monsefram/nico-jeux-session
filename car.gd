@@ -2,6 +2,9 @@ extends RigidBody2D
 
 var wheels: Array[RigidBody2D] = []
 
+var hud
+
+
 @export var speed: float = 8000.0
 @export var max_speed: float = 20.0      # rad/s pour la roue
 @export var body_torque: float = 900.0  # couple appliqué au châssis en avant
@@ -13,6 +16,9 @@ var spawn_position: Vector2
 var spawn_rotation: float = 0.0
 
 func _ready() -> void:
+	hud = get_tree().get_first_node_in_group("hud")
+	print("HUD trouvé :", hud)
+
 	wheels.clear()
 	for n in get_tree().get_nodes_in_group("wheel"):
 		var rb := n as RigidBody2D
@@ -43,6 +49,15 @@ func _physics_process(delta: float) -> void:
 	# --- Respawn automatique s'il tombe ---
 	if global_position.y > fall_limit_y:
 		_respawn()
+
+	# ---- CALCUL VITESSE (bien placé ici) ----
+	var speed_mps = linear_velocity.length()
+	var speed_kmh = speed_mps * 3.6 / 100
+
+	if hud:
+		hud.update_speed(speed_kmh)
+
+
 
 
 func _unhandled_input(event: InputEvent) -> void:

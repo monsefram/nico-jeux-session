@@ -1,17 +1,25 @@
-[gd_scene load_steps=44 format=4 uid="uid://s3ef4dtrqadp"]
+[gd_scene load_steps=53 format=4 uid="uid://s3ef4dtrqadp"]
 
 [ext_resource type="PackedScene" uid="uid://d0ns8oq0gf3g8" path="res://car.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://dsw8gyljjm8tp" path="res://texture/city_parallax_background_with_buildings_pixel_art/1.png" id="1_ycdy4"]
 [ext_resource type="Script" uid="uid://c6kxvfqr4ewu1" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="2_5vw27"]
+[ext_resource type="Texture2D" uid="uid://culiapua6q103" path="res://texture/city_parallax_background_with_buildings_pixel_art/2.png" id="2_w48qg"]
 [ext_resource type="Script" uid="uid://bwcf4pjgprn0k" path="res://addons/rmsmartshape/shapes/point.gd" id="3_kek77"]
+[ext_resource type="Texture2D" uid="uid://bblwkr6dfhfiy" path="res://texture/city_parallax_background_with_buildings_pixel_art/3.png" id="3_vivmo"]
 [ext_resource type="Script" uid="uid://bo5f7qe27jfje" path="res://addons/rmsmartshape/shapes/point_array.gd" id="4_4c57u"]
+[ext_resource type="Texture2D" uid="uid://cclt23croc2g1" path="res://texture/city_parallax_background_with_buildings_pixel_art/4.png" id="4_82xsv"]
 [ext_resource type="Script" uid="uid://llobjh5hvry" path="res://addons/rmsmartshape/shapes/mesh.gd" id="5_efxa6"]
+[ext_resource type="Texture2D" uid="uid://dun6c3vf6ur1b" path="res://texture/city_parallax_background_with_buildings_pixel_art/5.png" id="5_getpj"]
 [ext_resource type="Texture2D" uid="uid://23u61oymmd4v" path="res://texture/Images/Terrain/DirtBG.png" id="6_dg77c"]
+[ext_resource type="Texture2D" uid="uid://bq8rvumpanhig" path="res://texture/city_parallax_background_with_buildings_pixel_art/6.png" id="6_ryguw"]
+[ext_resource type="Texture2D" uid="uid://di2ab2ti8731y" path="res://texture/city_parallax_background_with_buildings_pixel_art/7.png" id="7_d13ii"]
 [ext_resource type="Texture2D" uid="uid://b5m5is22py0fw" path="res://texture/Images/Terrain/Grass.png" id="7_efxa6"]
 [ext_resource type="Script" uid="uid://0lhxan4cqrc1" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="7_ycdy4"]
 [ext_resource type="Script" uid="uid://nc5bfedvnpgm" path="res://addons/rmsmartshape/materials/shape_material.gd" id="8_w48qg"]
 [ext_resource type="Script" uid="uid://d0xjijisx1woh" path="res://addons/rmsmartshape/materials/edge_material.gd" id="9_dg77c"]
 [ext_resource type="Script" uid="uid://d218yx0d1ilsn" path="res://addons/rmsmartshape/normal_range.gd" id="10_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://fmabk6ntsujn" path="res://coin.tscn" id="12_dg77c"]
+[ext_resource type="Script" uid="uid://crt6fcs8qip6w" path="res://HUD.gd" id="20_82xsv"]
 
 [sub_resource type="Resource" id="Resource_vivmo"]
 script = ExtResource("3_kek77")
@@ -344,7 +352,67 @@ fill_texture_angle_offset = 0.0
 fill_mesh_offset = 0.0
 render_offset = 0.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82xsv"]
+
 [node name="Main" type="Node2D" groups=["wheel"]]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(960, 350)
+
+[node name="Parallax2D" type="Parallax2D" parent="Node2D"]
+scale = Vector2(10, 10)
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Parallax2D"]
+texture = ExtResource("1_ycdy4")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Node2D"]
+scale = Vector2(10, 10)
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Parallax2D2"]
+texture = ExtResource("2_w48qg")
+
+[node name="Parallax2D3" type="Parallax2D" parent="Node2D"]
+scale = Vector2(10, 10)
+scroll_scale = Vector2(0.2, 0)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Parallax2D3"]
+texture = ExtResource("3_vivmo")
+
+[node name="Parallax2D4" type="Parallax2D" parent="Node2D"]
+scale = Vector2(10, 10)
+scroll_scale = Vector2(0.3, 0)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Parallax2D4"]
+texture = ExtResource("4_82xsv")
+
+[node name="Parallax2D5" type="Parallax2D" parent="Node2D"]
+scale = Vector2(10, 10)
+scroll_scale = Vector2(0.4, 0)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Parallax2D5"]
+texture = ExtResource("5_getpj")
+
+[node name="Parallax2D6" type="Parallax2D" parent="Node2D"]
+scale = Vector2(10, 10)
+scroll_scale = Vector2(0.5, 0)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Parallax2D6"]
+texture = ExtResource("6_ryguw")
+
+[node name="Parallax2D7" type="Parallax2D" parent="Node2D"]
+scale = Vector2(10, 10)
+scroll_scale = Vector2(0.6, 0)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Parallax2D7"]
+texture = ExtResource("7_d13ii")
 
 [node name="car" parent="." groups=["wheel"] instance=ExtResource("1_ig7tw")]
 position = Vector2(23, -306)
@@ -376,3 +444,19 @@ position = Vector2(8513, 1949)
 
 [node name="coin3" parent="." instance=ExtResource("12_dg77c")]
 position = Vector2(12857, 2756)
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["hud"]]
+script = ExtResource("20_82xsv")
+
+[node name="SpeedLabel" type="Label" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.898039, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.898039, 1, 0.266667)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_82xsv")
