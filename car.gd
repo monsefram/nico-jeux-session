@@ -61,10 +61,6 @@ func _physics_process(delta: float) -> void:
 		
 
 
-
-
-
-
 func _unhandled_input(event: InputEvent) -> void:
 	# Permet au joueur de respawn manuellement avec "R" ou "Entrée"
 	if event.is_action_pressed("ui_accept") or Input.is_key_pressed(KEY_R):
