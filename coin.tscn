@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://fmabk6ntsujn"]
+[gd_scene load_steps=25 format=3 uid="uid://fmabk6ntsujn"]
 
 [ext_resource type="Script" uid="uid://cj6tull4kt2u7" path="res://coin.gd" id="1_uf4yh"]
 [ext_resource type="Texture2D" uid="uid://behexmrm8xush" path="res://texture/Gold/Gold_1.png" id="1_v1mwu"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bj63iqlsuawf0" path="res://texture/Gold/Gold_8.png" id="8_4rshd"]
 [ext_resource type="Texture2D" uid="uid://b5p055in0yj80" path="res://texture/Gold/Gold_9.png" id="9_oechm"]
 [ext_resource type="Texture2D" uid="uid://0q2r41eusj0m" path="res://texture/Gold/Gold_10.png" id="10_x3tkn"]
+[ext_resource type="AudioStream" uid="uid://c7qj5viilomn6" path="res://sound/coin.mp3" id="12_ciu18"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_huwo7"]
 radius = 88.6848
@@ -108,3 +109,4 @@ animation = &"spin"
 frame_progress = 0.840665
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_ciu18")

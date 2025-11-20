@@ -9,8 +9,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = 6.0
 offset_top = 7.0
-offset_right = 226.0
-offset_bottom = 215.0
+offset_right = 206.0
+offset_bottom = 187.0
 script = ExtResource("1_ca43d")
 
 [node name="Dial" type="TextureRect" parent="."]
@@ -40,4 +40,3 @@ offset_left = 80.0
 offset_top = 72.0
 offset_right = 120.0
 offset_bottom = 95.0
-text = "0 km"

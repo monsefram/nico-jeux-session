@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cnlfujplt528x" path="res://car.gd" id="1_uoj53"]
 [ext_resource type="PackedScene" uid="uid://bky3sshspxh7b" path="res://wheel.tscn" id="2_06lh1"]
-[ext_resource type="Texture2D" uid="uid://bn80p2n45p1iv" path="res://texture/Images/Car/RedCar.png" id="2_k61xc"]
+[ext_resource type="Texture2D" uid="uid://cirb3kn02pl3i" path="res://texture/Dune_buggy_no_ruote_bianca-removebg-preview.png" id="3_k61xc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uoj53"]
 bounce = 0.37
@@ -13,25 +13,28 @@ gravity_scale = 0.736
 script = ExtResource("1_uoj53")
 
 [node name="wheel_b" parent="." instance=ExtResource("2_06lh1")]
-position = Vector2(-200, 137)
+position = Vector2(-169, 25)
 
 [node name="PinJoint2D" type="PinJoint2D" parent="wheel_b"]
+position = Vector2(4, 36)
 node_a = NodePath("..")
 node_b = NodePath("../..")
 
 [node name="wheel_f" parent="." instance=ExtResource("2_06lh1")]
-position = Vector2(149, 135)
+position = Vector2(158, 32)
 
 [node name="PinJoint2D" type="PinJoint2D" parent="wheel_f"]
+position = Vector2(3, 35)
 node_a = NodePath("..")
 node_b = NodePath("../..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
+texture_filter = 5
 position = Vector2(3.75, 3.5)
 scale = Vector2(1.32609, 1.5)
-texture = ExtResource("2_k61xc")
+texture = ExtResource("3_k61xc")
+flip_h = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(5, -2)
-polygon = PackedVector2Array(-297, -62, -307, 148, -252, 151, 280, 137, 274, -8, 2, -80)
+polygon = PackedVector2Array(-254, 30, -309, -132, -80, -160, 32, -145, 87, -66, 289, -14, 259, 84, 159, 19, 68, 76, -79, 76, -167, -5)

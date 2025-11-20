@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bky3sshspxh7b"]
 
-[ext_resource type="Texture2D" uid="uid://cuhj54yfewpyv" path="res://texture/Images/Car/WheelMedium.png" id="1_8m8ww"]
+[ext_resource type="Texture2D" uid="uid://bqrjf2c7ertqv" path="res://texture/Ruota-removebg-preview.png" id="1_8m8ww"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e0ure"]
 radius = 83.0241
@@ -8,7 +8,10 @@ radius = 83.0241
 [node name="wheel" type="RigidBody2D" groups=["wheel"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 37)
+scale = Vector2(0.729, 0.707)
 texture = ExtResource("1_8m8ww")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 34)
 shape = SubResource("CircleShape2D_e0ure")
