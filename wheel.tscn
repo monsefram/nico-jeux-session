@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bqrjf2c7ertqv" path="res://texture/Ruota-removebg-preview.png" id="1_8m8ww"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e0ure"]
-radius = 83.0241
+radius = 83.0542
 
 [node name="wheel" type="RigidBody2D" groups=["wheel"]]
 
@@ -13,5 +13,5 @@ scale = Vector2(0.729, 0.707)
 texture = ExtResource("1_8m8ww")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 34)
+position = Vector2(2, 35)
 shape = SubResource("CircleShape2D_e0ure")

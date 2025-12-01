@@ -19,9 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://ccndisfxbi3gu" path="res://texture/neon city free/spr_neon_city_free_1.png" id="8_d4rhq"]
 [ext_resource type="Script" uid="uid://d218yx0d1ilsn" path="res://addons/rmsmartshape/normal_range.gd" id="8_eoq84"]
 [ext_resource type="PackedScene" uid="uid://fmabk6ntsujn" path="res://coin.tscn" id="11_eoq84"]
-[ext_resource type="AudioStream" uid="uid://dsxoo6lt5qnc6" path="res://sound/coin (1).mp3" id="12_yl73a"]
 [ext_resource type="Script" uid="uid://crt6fcs8qip6w" path="res://HUD.gd" id="13_s77qv"]
 [ext_resource type="PackedScene" uid="uid://b5imclpco5vwi" path="res://speedometer.tscn" id="14_5hnhx"]
+[ext_resource type="PackedScene" uid="uid://d15f5u8g85ipf" path="res://sound_manager.tscn" id="22_wvr33"]
 
 [sub_resource type="Resource" id="Resource_t8cg7"]
 script = ExtResource("3_ehv2h")
@@ -463,15 +463,12 @@ position_smoothing_speed = 10.0
 
 [node name="coin" parent="." instance=ExtResource("11_eoq84")]
 position = Vector2(-35162, 915)
-pickup_sound = ExtResource("12_yl73a")
 
 [node name="coin2" parent="." instance=ExtResource("11_eoq84")]
 position = Vector2(-1879, -1340)
-pickup_sound = ExtResource("12_yl73a")
 
 [node name="coin3" parent="." instance=ExtResource("11_eoq84")]
 position = Vector2(21202, -2399)
-pickup_sound = ExtResource("12_yl73a")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["hud"]]
 script = ExtResource("13_s77qv")
@@ -480,3 +477,5 @@ script = ExtResource("13_s77qv")
 
 [node name="RespawnPoint" type="Node2D" parent="." groups=["spawn"]]
 position = Vector2(-57020, 993)
+
+[node name="SoundManager" parent="." instance=ExtResource("22_wvr33")]

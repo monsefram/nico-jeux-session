@@ -21,13 +21,10 @@ func _set_spawn_from_scene():
 		var sp = spawns[0]
 		spawn_position = sp.global_position
 		spawn_rotation = sp.global_rotation
-		print("Spawn détecté :", spawn_position)
-	else:
-		print("⚠️ Aucun SpawnPoint trouvé, utilisation du spawn par défaut.")
+
 
 func _ready() -> void:
 	hud = get_tree().get_first_node_in_group("hud")
-	print("HUD trouvé :", hud)
 
 	wheels.clear()
 	for n in get_tree().get_nodes_in_group("wheel"):

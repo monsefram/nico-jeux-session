@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://db23thflafiwa" path="res://texture/neon city free/spr_neon_city_free_6.png" id="7_a6jrf"]
 [ext_resource type="PackedScene" uid="uid://fmabk6ntsujn" path="res://coin.tscn" id="12_dg77c"]
 [ext_resource type="Texture2D" uid="uid://bu2wjljj1kfdh" path="res://texture/Blue_Neon.png" id="14_getpj"]
+[ext_resource type="PackedScene" uid="uid://d15f5u8g85ipf" path="res://sound_manager.tscn" id="14_w48qg"]
 [ext_resource type="Script" uid="uid://crt6fcs8qip6w" path="res://HUD.gd" id="20_82xsv"]
-[ext_resource type="AudioStream" uid="uid://dsxoo6lt5qnc6" path="res://sound/coin (1).mp3" id="21_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://b5imclpco5vwi" path="res://speedometer.tscn" id="21_getpj"]
 
 [node name="Main" type="Node2D" groups=["wheel"]]
@@ -117,15 +117,12 @@ end_cap_mode = 2
 
 [node name="coin" parent="." instance=ExtResource("12_dg77c")]
 position = Vector2(4128, 2152)
-pickup_sound = ExtResource("21_1u8w0")
 
 [node name="coin2" parent="." instance=ExtResource("12_dg77c")]
 position = Vector2(8513, 1949)
-pickup_sound = ExtResource("21_1u8w0")
 
 [node name="coin3" parent="." instance=ExtResource("12_dg77c")]
 position = Vector2(12857, 2756)
-pickup_sound = ExtResource("21_1u8w0")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["hud"]]
 script = ExtResource("20_82xsv")
@@ -134,3 +131,5 @@ script = ExtResource("20_82xsv")
 
 [node name="RespawnPoint" type="Node2D" parent="." groups=["spawn"]]
 position = Vector2(-1081, 682)
+
+[node name="SoundManager" parent="." instance=ExtResource("14_w48qg")]

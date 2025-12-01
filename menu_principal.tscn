@@ -1,16 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://xu84v5gdcm7g"]
 
 [ext_resource type="Script" uid="uid://clcjo77dqbn20" path="res://menu_principal.gd" id="1_bj1uy"]
-
-[sub_resource type="Gradient" id="Gradient_x7udj"]
-offsets = PackedFloat32Array(0, 0.531469, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.0191859, 0.386593, 0.36433, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_bj1uy"]
-gradient = SubResource("Gradient_x7udj")
+[ext_resource type="Texture2D" uid="uid://bsyn6lkw5ptli" path="res://texture/neon_beach.png" id="2_ul6ys"]
+[ext_resource type="FontFile" uid="uid://dbtagcaaddp6h" path="res://texture/Font/Kenney Future.ttf" id="3_ns3he"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x7udj"]
+font = ExtResource("3_ns3he")
 font_size = 50
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 10)
 
 [node name="MenuPrincipal" type="Control"]
 layout_mode = 3
@@ -23,25 +21,29 @@ script = ExtResource("1_bj1uy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 1.08519
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_bj1uy")
+texture = ExtResource("2_ul6ys")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Titre" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -67.0
-offset_top = 345.0
-offset_right = 67.0
-offset_bottom = 368.0
+anchor_bottom = 0.5
+offset_left = -259.0
+offset_top = -162.0
+offset_right = 260.0
+offset_bottom = -72.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/shadow_offset_y = 20
 text = "MENU PRINCIPAL"
 label_settings = SubResource("LabelSettings_x7udj")
 

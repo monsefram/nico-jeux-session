@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjh5qmsbcygqv"]
+
+[ext_resource type="Script" uid="uid://qwgrj2a8oio6" path="res://levels.gd" id="1_hbfth"]
+[ext_resource type="Texture2D" uid="uid://bsyn6lkw5ptli" path="res://texture/neon_beach.png" id="2_02xe8"]
+[ext_resource type="FontFile" uid="uid://dbtagcaaddp6h" path="res://texture/Font/Kenney Future.ttf" id="3_xv4fl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x7udj"]
+font = ExtResource("3_xv4fl")
+font_size = 50
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 10)
+
+[node name="Levels" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hbfth")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.08519
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_02xe8")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Titre" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -159.0
+offset_right = 125.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/shadow_offset_y = 20
+text = "levels"
+label_settings = SubResource("LabelSettings_x7udj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -59.0
+offset_right = 150.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="lvl1" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "LVL 1"
+
+[node name="lvl2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "LVL 2"
+
+[node name="lvl3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "LVL 3"
+
+[connection signal="button_down" from="VBoxContainer/lvl1" to="." method="_on_lvl_1_button_down"]
+[connection signal="button_down" from="VBoxContainer/lvl2" to="." method="_on_lvl_2_button_down"]
+[connection signal="button_down" from="VBoxContainer/lvl3" to="." method="_on_lvl_3_button_down"]

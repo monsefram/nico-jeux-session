@@ -1,10 +1,9 @@
 extends Area2D
 
 @export var value: int = 1
-@export var pickup_sound: AudioStream
 
-@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var pickup_sound: AudioStreamPlayer2D = $pickup_sound
 
 signal picked(value: int)
 
@@ -15,10 +14,7 @@ func _ready():
 func _on_body_entered(body):
 	if body.name == "car":
 		emit_signal("picked", value)
-
-		if pickup_sound:
-			audio.stream = pickup_sound
-			audio.play()
+		pickup_sound.play()
 
 		await get_tree().create_timer(0.1).timeout
 		queue_free()
