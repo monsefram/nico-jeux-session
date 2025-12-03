@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://3i2ppibtlvco"]
+[gd_scene load_steps=25 format=3 uid="uid://3i2ppibtlvco"]
 
 [ext_resource type="Texture2D" uid="uid://bu2wjljj1kfdh" path="res://texture/Blue_Neon.png" id="1_7j8ne"]
 [ext_resource type="Texture2D" uid="uid://dievtd61oym7h" path="res://texture/neon city free/spr_neon_city_free_8.png" id="1_wvr33"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b5imclpco5vwi" path="res://speedometer.tscn" id="14_5hnhx"]
 [ext_resource type="Script" uid="uid://okd1brlk7wsy" path="res://level_end.gd" id="15_78pok"]
 [ext_resource type="Texture2D" uid="uid://bk3copskri10y" path="res://texture/flag animation.png" id="16_lvfll"]
+[ext_resource type="PackedScene" uid="uid://cus8e3g0lqk4y" path="res://pause_menu.tscn" id="17_lvfll"]
 [ext_resource type="PackedScene" uid="uid://d15f5u8g85ipf" path="res://sound_manager.tscn" id="22_wvr33"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jcnlr"]
@@ -151,7 +152,7 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="car" parent="." groups=["wheel"] instance=ExtResource("8_7dov7")]
+[node name="car" parent="." groups=["car", "wheel"] instance=ExtResource("8_7dov7")]
 position = Vector2(-58170, 993)
 mass = 1.874
 center_of_mass_mode = 1
@@ -197,3 +198,7 @@ position = Vector2(41148, -4327)
 scale = Vector2(21.229, 17.858)
 sprite_frames = SubResource("SpriteFrames_5kfcu")
 frame_progress = 0.066379
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("17_lvfll")]
