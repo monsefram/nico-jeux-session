@@ -106,7 +106,7 @@ position = Vector2(-92, -40.875)
 scale = Vector2(0.333925, 0.33289)
 sprite_frames = SubResource("SpriteFrames_7c1ty")
 animation = &"spin"
-frame_progress = 0.840665
+frame_progress = 0.917401
 
 [node name="pickup_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_ciu18")

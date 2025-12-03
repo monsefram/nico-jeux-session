@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://s3ef4dtrqadp"]
+[gd_scene load_steps=24 format=3 uid="uid://s3ef4dtrqadp"]
 
 [ext_resource type="PackedScene" uid="uid://d0ns8oq0gf3g8" path="res://car.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dievtd61oym7h" path="res://texture/neon city free/spr_neon_city_free_8.png" id="1_ryguw"]
@@ -12,8 +12,57 @@
 [ext_resource type="PackedScene" uid="uid://fmabk6ntsujn" path="res://coin.tscn" id="12_dg77c"]
 [ext_resource type="Texture2D" uid="uid://bu2wjljj1kfdh" path="res://texture/Blue_Neon.png" id="14_getpj"]
 [ext_resource type="PackedScene" uid="uid://d15f5u8g85ipf" path="res://sound_manager.tscn" id="14_w48qg"]
+[ext_resource type="Script" uid="uid://okd1brlk7wsy" path="res://level_end.gd" id="15_vivmo"]
+[ext_resource type="Texture2D" uid="uid://bk3copskri10y" path="res://texture/flag animation.png" id="16_2cqfq"]
 [ext_resource type="Script" uid="uid://crt6fcs8qip6w" path="res://HUD.gd" id="20_82xsv"]
 [ext_resource type="PackedScene" uid="uid://b5imclpco5vwi" path="res://speedometer.tscn" id="21_getpj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yaehf"]
+radius = 328.0
+height = 1472.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_074og"]
+atlas = ExtResource("16_2cqfq")
+region = Rect2(0, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cegan"]
+atlas = ExtResource("16_2cqfq")
+region = Rect2(60, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82xsv"]
+atlas = ExtResource("16_2cqfq")
+region = Rect2(120, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_getpj"]
+atlas = ExtResource("16_2cqfq")
+region = Rect2(180, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryguw"]
+atlas = ExtResource("16_2cqfq")
+region = Rect2(240, 0, 60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vivmo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_074og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cegan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82xsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_getpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryguw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Main" type="Node2D" groups=["wheel"]]
 
@@ -84,7 +133,7 @@ repeat_size = Vector2(960, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/Parallax2D8"]
 texture = ExtResource("2_ryguw")
 
-[node name="car" parent="." groups=["wheel"] instance=ExtResource("1_ig7tw")]
+[node name="car" parent="." groups=["car", "wheel"] instance=ExtResource("1_ig7tw")]
 position = Vector2(23, 455)
 mass = 1.874
 center_of_mass_mode = 1
@@ -133,3 +182,17 @@ script = ExtResource("20_82xsv")
 position = Vector2(-1081, 682)
 
 [node name="SoundManager" parent="." instance=ExtResource("14_w48qg")]
+
+[node name="levelEnd" type="Area2D" parent="."]
+script = ExtResource("15_vivmo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levelEnd"]
+position = Vector2(23445, 2584)
+shape = SubResource("CapsuleShape2D_yaehf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="levelEnd"]
+texture_filter = 5
+position = Vector2(23635, 2388)
+scale = Vector2(21.2292, 17.8583)
+sprite_frames = SubResource("SpriteFrames_vivmo")
+frame_progress = 0.0136671
