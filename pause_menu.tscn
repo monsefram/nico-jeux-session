@@ -1,11 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://cus8e3g0lqk4y"]
+[gd_scene load_steps=10 format=3 uid="uid://cus8e3g0lqk4y"]
 
 [ext_resource type="Shader" uid="uid://bko1ao1eegrej" path="res://pause_menu.gdshader" id="1_hdmo1"]
 [ext_resource type="Script" uid="uid://q2es8xnpcy31" path="res://pause_menu.gd" id="1_nwcfo"]
+[ext_resource type="Script" uid="uid://cwh211rvwk13x" path="res://audio_controller.gd" id="3_05uyy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wyi4u"]
 shader = ExtResource("1_hdmo1")
 shader_parameter/lod = 0.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_nwcfo"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05uyy"]
+bg_color = Color(0.247059, 0.227451, 0.937255, 1)
 
 [sub_resource type="Animation" id="Animation_05uyy"]
 resource_name = "blur"
@@ -110,33 +118,68 @@ offset_bottom = 147.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="MainButton" type="VBoxContainer" parent="PanelContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 alignment = 1
 
-[node name="resume" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="resume" type="Button" parent="PanelContainer/MainButton"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 text = "Resume
 "
 
-[node name="restart" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="restart" type="Button" parent="PanelContainer/MainButton"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 text = "Levels
 "
 
-[node name="settings" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="settings" type="Button" parent="PanelContainer/MainButton"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 text = "Settings
 "
 
-[node name="quit" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="quit" type="Button" parent="PanelContainer/MainButton"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 text = "Quit
+"
+
+[node name="Settings" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/Settings"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Music :
+"
+
+[node name="AudioController" type="HSlider" parent="PanelContainer/Settings"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxLine_nwcfo")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_05uyy")
+max_value = 50.0
+step = 0.05
+value = 10.0
+script = ExtResource("3_05uyy")
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/Settings"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/Settings"]
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back
 "
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -144,6 +187,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_2nc7s")
 }
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PanelContainer/MainButton/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/MainButton/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/MainButton/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="PanelContainer/MainButton/quit" to="." method="_on_quit_pressed"]
+[connection signal="value_changed" from="PanelContainer/Settings/AudioController" to="PanelContainer/Settings/AudioController" method="_on_value_changed"]
+[connection signal="pressed" from="PanelContainer/Settings/Button" to="." method="_on_button_pressed"]

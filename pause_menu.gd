@@ -1,7 +1,14 @@
 extends Control
 #@onready var optionsMenu = preload("res://options_menu.tscn")
+@onready var main_button: VBoxContainer = $PanelContainer/MainButton
+@onready var settings: VBoxContainer = $PanelContainer/Settings
+
+
+
 func _ready():
 	$AnimationPlayer.play("RESET")
+	main_button.visible = true
+	settings.visible = false
 
 func resume():
 	get_tree().paused = false
@@ -29,11 +36,17 @@ func _process(_delta):
 	testEsc()
 
 
-#func _on_options_pressed():
-	#resume()
-	#get_tree().change_scene_to_file("res://options_menu.tscn")
-
-
 func _on_restart_pressed() -> void:
 	resume()
 	get_tree().change_scene_to_file("res://levels.tscn")
+
+
+func _on_settings_pressed() -> void:
+	main_button.visible = false
+	settings.visible = true
+	
+
+
+func _on_button_pressed() -> void:
+	main_button.visible = true
+	settings.visible = false
