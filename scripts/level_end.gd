@@ -3,6 +3,7 @@ extends Area2D
 # Chemin de la scène suivante (ex: "res://levels/level2.tscn")
 @export var next_scene_path: String = "res://levels.tscn"
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var win_node = get_tree().current_scene.get_node("win")
 
 func _ready() -> void:
 	# connecte le signal quand un corps entre dans la zone
@@ -15,4 +16,5 @@ func _on_body_entered(body: Node) -> void:
 	if not body.is_in_group("car"):
 		return
 
-	get_tree().change_scene_to_file(next_scene_path)
+	win_node.win()
+	

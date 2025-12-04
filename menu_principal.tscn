@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://xu84v5gdcm7g"]
 
-[ext_resource type="Script" uid="uid://clcjo77dqbn20" path="res://menu_principal.gd" id="1_bj1uy"]
+[ext_resource type="Script" uid="uid://clcjo77dqbn20" path="res://scripts/menu_principal.gd" id="1_bj1uy"]
 [ext_resource type="Texture2D" uid="uid://bsyn6lkw5ptli" path="res://texture/neon_beach.png" id="2_ul6ys"]
 [ext_resource type="FontFile" uid="uid://dbtagcaaddp6h" path="res://texture/Font/Kenney Future.ttf" id="3_ns3he"]
 

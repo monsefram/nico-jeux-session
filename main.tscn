@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://s3ef4dtrqadp"]
+[gd_scene load_steps=30 format=3 uid="uid://s3ef4dtrqadp"]
 
 [ext_resource type="PackedScene" uid="uid://d0ns8oq0gf3g8" path="res://car.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dievtd61oym7h" path="res://texture/neon city free/spr_neon_city_free_8.png" id="1_ryguw"]
@@ -13,12 +13,15 @@
 [ext_resource type="Texture2D" uid="uid://bu576t1fx72j0" path="res://texture/Gold/Gold_21.png" id="14_074og"]
 [ext_resource type="Texture2D" uid="uid://bu2wjljj1kfdh" path="res://texture/Blue_Neon.png" id="14_getpj"]
 [ext_resource type="PackedScene" uid="uid://d15f5u8g85ipf" path="res://sound_manager.tscn" id="14_w48qg"]
-[ext_resource type="Script" uid="uid://okd1brlk7wsy" path="res://level_end.gd" id="15_vivmo"]
+[ext_resource type="Script" uid="uid://okd1brlk7wsy" path="res://scripts/level_end.gd" id="15_vivmo"]
 [ext_resource type="Texture2D" uid="uid://bk3copskri10y" path="res://texture/flag animation.png" id="16_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://cus8e3g0lqk4y" path="res://pause_menu.tscn" id="17_yaehf"]
 [ext_resource type="PackedScene" uid="uid://dcp2drkt0uqpc" path="res://debug_overlay.tscn" id="19_cegan"]
-[ext_resource type="Script" uid="uid://crt6fcs8qip6w" path="res://HUD.gd" id="20_82xsv"]
+[ext_resource type="Script" uid="uid://crt6fcs8qip6w" path="res://scripts/HUD.gd" id="20_82xsv"]
+[ext_resource type="Script" uid="uid://bit3u5b40y5kc" path="res://scripts/gameover.gd" id="20_getpj"]
 [ext_resource type="PackedScene" uid="uid://b5imclpco5vwi" path="res://speedometer.tscn" id="21_getpj"]
+[ext_resource type="FontFile" uid="uid://dbtagcaaddp6h" path="res://texture/Font/Kenney Future.ttf" id="21_ryguw"]
+[ext_resource type="Script" uid="uid://d2cp8svul0wmg" path="res://scripts/win.gd" id="22_ryguw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yaehf"]
 radius = 328.0
@@ -217,8 +220,95 @@ scale = Vector2(21.2292, 17.8583)
 sprite_frames = SubResource("SpriteFrames_vivmo")
 frame_progress = 0.0136671
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Pause" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("17_yaehf")]
+[node name="PauseMenu" parent="Pause" instance=ExtResource("17_yaehf")]
 
 [node name="DebugOverlay" parent="." instance=ExtResource("19_cegan")]
+
+[node name="Gameover" type="CanvasLayer" parent="." groups=["gameover"]]
+process_mode = 3
+visible = false
+script = ExtResource("20_getpj")
+
+[node name="Panel" type="Panel" parent="Gameover"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -608.5
+offset_top = -359.5
+offset_right = 608.5
+offset_bottom = 359.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Gameover"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.0
+offset_top = -122.0
+offset_right = 269.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("21_ryguw")
+theme_override_font_sizes/font_size = 60
+text = "GAME OVER"
+
+[node name="retry" type="Button" parent="Gameover"]
+offset_left = 677.0
+offset_top = 547.0
+offset_right = 1140.0
+offset_bottom = 747.0
+theme_override_fonts/font = ExtResource("21_ryguw")
+theme_override_font_sizes/font_size = 50
+text = "RETRY"
+
+[node name="win" type="CanvasLayer" parent="." groups=["win"]]
+process_mode = 3
+script = ExtResource("22_ryguw")
+
+[node name="Panel" type="Panel" parent="win"]
+offset_left = 356.0
+offset_top = 184.0
+offset_right = 1571.0
+offset_bottom = 901.0
+
+[node name="Label" type="Label" parent="win"]
+offset_left = 747.0
+offset_top = 239.0
+offset_right = 1167.0
+offset_bottom = 322.0
+theme_override_fonts/font = ExtResource("21_ryguw")
+theme_override_font_sizes/font_size = 70
+text = "YOU WIN "
+
+[node name="Levels" type="Button" parent="win"]
+offset_left = 663.0
+offset_top = 421.0
+offset_right = 1232.0
+offset_bottom = 529.0
+theme_override_fonts/font = ExtResource("21_ryguw")
+theme_override_font_sizes/font_size = 50
+text = "LEVELS"
+
+[node name="mainmenu" type="Button" parent="win"]
+offset_left = 631.0
+offset_top = 625.0
+offset_right = 1269.0
+offset_bottom = 722.0
+theme_override_fonts/font = ExtResource("21_ryguw")
+theme_override_font_sizes/font_size = 50
+text = "BACK TO MAIN MENU"
+
+[connection signal="pressed" from="Gameover/retry" to="Gameover" method="_on_retry_pressed"]
+[connection signal="pressed" from="win/Levels" to="win" method="_on_levels_pressed"]
+[connection signal="pressed" from="win/mainmenu" to="win" method="_on_mainmenu_pressed"]

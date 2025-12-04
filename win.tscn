@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqae0wp4yhrb1"]
+[gd_scene load_steps=7 format=3 uid="uid://dqae0wp4yhrb1"]
 
-[ext_resource type="Shader" uid="uid://bko1ao1eegrej" path="res://pause_menu.gdshader" id="1_wao2c"]
+[ext_resource type="Shader" uid="uid://bko1ao1eegrej" path="res://scripts/pause_menu.gdshader" id="1_wao2c"]
+[ext_resource type="FontFile" uid="uid://dbtagcaaddp6h" path="res://texture/Font/Kenney Future.ttf" id="2_hgi8f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wyi4u"]
 shader = ExtResource("1_wao2c")
@@ -107,6 +108,13 @@ offset_right = 229.0
 offset_bottom = 147.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_hgi8f")
+theme_override_font_sizes/font_size = 40
+text = "GAME OVER"
 
 [node name="MainButton" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
