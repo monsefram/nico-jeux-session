@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://3i2ppibtlvco"]
+[gd_scene load_steps=26 format=3 uid="uid://3i2ppibtlvco"]
 
 [ext_resource type="Texture2D" uid="uid://bu2wjljj1kfdh" path="res://texture/Blue_Neon.png" id="1_7j8ne"]
 [ext_resource type="Texture2D" uid="uid://dievtd61oym7h" path="res://texture/neon city free/spr_neon_city_free_8.png" id="1_wvr33"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://crt6fcs8qip6w" path="res://HUD.gd" id="13_s77qv"]
 [ext_resource type="PackedScene" uid="uid://b5imclpco5vwi" path="res://speedometer.tscn" id="14_5hnhx"]
 [ext_resource type="Script" uid="uid://okd1brlk7wsy" path="res://level_end.gd" id="15_78pok"]
+[ext_resource type="Texture2D" uid="uid://bu576t1fx72j0" path="res://texture/Gold/Gold_21.png" id="15_jcnlr"]
 [ext_resource type="Texture2D" uid="uid://bk3copskri10y" path="res://texture/flag animation.png" id="16_lvfll"]
 [ext_resource type="PackedScene" uid="uid://cus8e3g0lqk4y" path="res://pause_menu.tscn" id="17_lvfll"]
 [ext_resource type="PackedScene" uid="uid://d15f5u8g85ipf" path="res://sound_manager.tscn" id="22_wvr33"]
@@ -174,15 +175,32 @@ position = Vector2(-1879, -1340)
 [node name="coin3" parent="." instance=ExtResource("11_eoq84")]
 position = Vector2(21202, -2399)
 
+[node name="RespawnPoint" type="Node2D" parent="." groups=["spawn"]]
+position = Vector2(-57020, 993)
+
+[node name="SoundManager" parent="." instance=ExtResource("22_wvr33")]
+
 [node name="HUD" type="CanvasLayer" parent="." groups=["hud"]]
 script = ExtResource("13_s77qv")
 
 [node name="Speedometer" parent="HUD" instance=ExtResource("14_5hnhx")]
 
-[node name="RespawnPoint" type="Node2D" parent="." groups=["spawn"]]
-position = Vector2(-57020, 993)
+[node name="CoinCounter" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -127.0
+offset_top = 17.0
+offset_right = -81.0
+offset_bottom = 72.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.588235, 0.490196, 0, 1)
+theme_override_font_sizes/font_size = 40
 
-[node name="SoundManager" parent="." instance=ExtResource("22_wvr33")]
+[node name="Sprite2D" type="Sprite2D" parent="HUD"]
+position = Vector2(1874, 46)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("15_jcnlr")
 
 [node name="levelEnd" type="Area2D" parent="."]
 position = Vector2(1, -2)

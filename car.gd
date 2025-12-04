@@ -9,6 +9,9 @@ var hud
 @export var body_torque: float = -13000.0
 @export var body_torque_rev: float = -13000.0
 
+@onready var vroom: AudioStreamPlayer2D = $Vroom
+
+
 # ---- Respawn ----
 @export var fall_limit_y: float = 3500.0
 var spawn_position: Vector2
@@ -36,24 +39,39 @@ func _ready() -> void:
 	spawn_position = global_position
 	spawn_rotation = global_rotation
 
-	# NOUVEAU : override si un SpawnPoint existe dans la scène
 	_set_spawn_from_scene()
+
 
 func _physics_process(delta: float) -> void:
 	var s := delta * 60.0
 
+	var accelerating := false
+
 	if Input.is_action_pressed("ui_right"):
+		accelerating = true
 		apply_torque_impulse(body_torque * s)
 		for w in wheels:
 			if w.angular_velocity < max_speed:
 				w.apply_torque_impulse(speed * s)
 
 	elif Input.is_action_pressed("ui_left"):
+		accelerating = true
 		apply_torque_impulse(-body_torque_rev * s)
 		for w in wheels:
 			if w.angular_velocity > -max_speed:
 				w.apply_torque_impulse(-speed * s)
 
+	# 🔊 --- SON MOTEUR ---
+	if accelerating:
+		if not vroom.playing:
+			vroom.play()
+		vroom.pitch_scale = lerp(vroom.pitch_scale, 1.8, delta * 5)
+	else:
+		vroom.pitch_scale = max(0.8, vroom.pitch_scale - delta * 2)
+		if vroom.pitch_scale <= 0.81:
+			vroom.stop()
+
+	# Respawn si tombe
 	if global_position.y > fall_limit_y:
 		_respawn()
 
@@ -64,9 +82,11 @@ func _physics_process(delta: float) -> void:
 		var speedometer = hud.get_node("Speedometer")
 		speedometer.update_speed(speed_kmh)
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") or Input.is_key_pressed(KEY_R):
 		_respawn()
+
 
 func _respawn() -> void:
 	global_position = spawn_position

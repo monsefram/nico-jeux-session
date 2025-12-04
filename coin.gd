@@ -2,6 +2,8 @@ extends Area2D
 
 @export var value: int = 1
 
+@onready var coin: AnimatedSprite2D = $AnimatedSprite2D
+
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var pickup_sound: AudioStreamPlayer2D = $pickup_sound
 
@@ -15,6 +17,12 @@ func _on_body_entered(body):
 	if body.name == "car":
 		emit_signal("picked", value)
 		pickup_sound.play()
+		
+		var hud = get_tree().get_first_node_in_group("hud")
+		if hud:
+			hud.add_coins(value)
+		
 
-		await get_tree().create_timer(0.1).timeout
+		coin.visible = false
+		await pickup_sound.finished
 		queue_free()

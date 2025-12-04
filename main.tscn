@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://s3ef4dtrqadp"]
+[gd_scene load_steps=26 format=3 uid="uid://s3ef4dtrqadp"]
 
 [ext_resource type="PackedScene" uid="uid://d0ns8oq0gf3g8" path="res://car.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dievtd61oym7h" path="res://texture/neon city free/spr_neon_city_free_8.png" id="1_ryguw"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://4uuq7enkpvwp" path="res://texture/neon city free/spr_neon_city_free_5.png" id="6_lswn8"]
 [ext_resource type="Texture2D" uid="uid://db23thflafiwa" path="res://texture/neon city free/spr_neon_city_free_6.png" id="7_a6jrf"]
 [ext_resource type="PackedScene" uid="uid://fmabk6ntsujn" path="res://coin.tscn" id="12_dg77c"]
+[ext_resource type="Texture2D" uid="uid://bu576t1fx72j0" path="res://texture/Gold/Gold_21.png" id="14_074og"]
 [ext_resource type="Texture2D" uid="uid://bu2wjljj1kfdh" path="res://texture/Blue_Neon.png" id="14_getpj"]
 [ext_resource type="PackedScene" uid="uid://d15f5u8g85ipf" path="res://sound_manager.tscn" id="14_w48qg"]
 [ext_resource type="Script" uid="uid://okd1brlk7wsy" path="res://level_end.gd" id="15_vivmo"]
@@ -178,6 +179,23 @@ position = Vector2(12857, 2756)
 script = ExtResource("20_82xsv")
 
 [node name="Speedometer" parent="HUD" instance=ExtResource("21_getpj")]
+
+[node name="CoinCounter" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -127.0
+offset_top = 17.0
+offset_right = -81.0
+offset_bottom = 72.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.588235, 0.490196, 0, 1)
+theme_override_font_sizes/font_size = 40
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD"]
+position = Vector2(1874, 46)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("14_074og")
 
 [node name="RespawnPoint" type="Node2D" parent="." groups=["spawn"]]
 position = Vector2(-1081, 682)

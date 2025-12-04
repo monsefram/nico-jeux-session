@@ -55,9 +55,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -59.0
+offset_top = -81.0
 offset_right = 150.0
-offset_bottom = 59.0
+offset_bottom = 159.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -77,6 +77,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "LVL 3"
 
+[node name="back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Back"
+
 [connection signal="button_down" from="VBoxContainer/lvl1" to="." method="_on_lvl_1_button_down"]
 [connection signal="button_down" from="VBoxContainer/lvl2" to="." method="_on_lvl_2_button_down"]
 [connection signal="button_down" from="VBoxContainer/lvl3" to="." method="_on_lvl_3_button_down"]
+[connection signal="button_down" from="VBoxContainer/back" to="." method="_on_back_button_down"]
