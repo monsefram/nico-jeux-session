@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcp2drkt0uqpc"]
+
+[ext_resource type="Script" uid="uid://bwvyc6ah4wl0i" path="res://debug_overlay.gd" id="1_t3oe4"]
+
+[node name="DebugOverlay" type="CanvasLayer"]
+script = ExtResource("1_t3oe4")
+
+[node name="DebugLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0

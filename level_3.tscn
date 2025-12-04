@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b54j1vgvhucew"]
+[gd_scene load_steps=27 format=3 uid="uid://b54j1vgvhucew"]
 
 [ext_resource type="Texture2D" uid="uid://dievtd61oym7h" path="res://texture/neon city free/spr_neon_city_free_8.png" id="1_4hpui"]
 [ext_resource type="Texture2D" uid="uid://bsvrejcyuax2e" path="res://texture/neon city free/spr_neon_city_free_7.png" id="2_g005c"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cus8e3g0lqk4y" path="res://pause_menu.tscn" id="17_joegk"]
 [ext_resource type="PackedScene" uid="uid://d0ns8oq0gf3g8" path="res://car.tscn" id="18_cqks1"]
 [ext_resource type="PackedScene" uid="uid://fmabk6ntsujn" path="res://coin.tscn" id="19_ekg0r"]
+[ext_resource type="PackedScene" uid="uid://dcp2drkt0uqpc" path="res://debug_overlay.tscn" id="19_wnq0t"]
 [ext_resource type="Script" uid="uid://crt6fcs8qip6w" path="res://HUD.gd" id="21_4g8ag"]
 [ext_resource type="PackedScene" uid="uid://d15f5u8g85ipf" path="res://sound_manager.tscn" id="22_4hpui"]
 [ext_resource type="PackedScene" uid="uid://b5imclpco5vwi" path="res://speedometer.tscn" id="22_k7jig"]
@@ -226,3 +227,5 @@ frame_progress = 0.871665
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("17_joegk")]
+
+[node name="DebugOverlay" parent="." instance=ExtResource("19_wnq0t")]

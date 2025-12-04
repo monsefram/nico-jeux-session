@@ -1,7 +1,6 @@
 extends RigidBody2D
 
 var wheels: Array[RigidBody2D] = []
-
 var hud
 
 @export var speed: float = 10000.0
@@ -10,14 +9,24 @@ var hud
 @export var body_torque_rev: float = -13000.0
 
 @onready var vroom: AudioStreamPlayer2D = $Vroom
-
+@onready var rewind_fx: AudioStreamPlayer2D = $RewindSound     
 
 # ---- Respawn ----
 @export var fall_limit_y: float = 3500.0
 var spawn_position: Vector2
 var spawn_rotation: float = 0.0
 
-# NOUVEAU : spawn par scène
+# ---- REWIND SYSTEM ----
+var record_time := 8.0
+var buffer := []
+var max_frames := 60 * 8
+var rewinding := false
+
+# Cooldown de rewind
+var rewind_cooldown := 0.0
+var rewind_delay := 10.0       
+
+# ---- Spawn par scène ----
 func _set_spawn_from_scene():
 	var spawns = get_tree().get_nodes_in_group("spawn")
 	if spawns.size() > 0:
@@ -35,16 +44,80 @@ func _ready() -> void:
 		if rb:
 			wheels.append(rb)
 
-	# Enregistre la position de départ comme point de respawn (si pas de SpawnPoint)
 	spawn_position = global_position
 	spawn_rotation = global_rotation
-
 	_set_spawn_from_scene()
+
+
+
+# ---- Enregistrer l'état ----
+func _record_state():
+	buffer.append({
+		"pos": global_position,
+		"rot": global_rotation,
+		"vel": linear_velocity,
+		"ang": angular_velocity
+	})
+	if buffer.size() > max_frames:
+		buffer.pop_front()
+
+
+# ---- Rewind ----
+func _rewind(delta):
+	if buffer.size() == 0:
+		_stop_rewind()
+		return
+
+	var state = buffer.pop_back()
+
+	global_position = state["pos"]
+	global_rotation = state["rot"]
+	linear_velocity = state["vel"]
+	angular_velocity = state["ang"]
+
+
+func _start_rewind():
+	if rewind_cooldown > 0:
+		return
+
+	rewinding = true
+	rewind_cooldown = rewind_delay
+
+
+
+	if rewind_fx:
+		rewind_fx.play()
+
+
+func _stop_rewind():
+	rewinding = false
+
 
 
 func _physics_process(delta: float) -> void:
 	var s := delta * 60.0
 
+	# Cooldown
+	if rewind_cooldown > 0:
+		rewind_cooldown -= delta
+
+	# --- Activation du rewind ---
+	if Input.is_action_pressed("back"):  
+		if not rewinding:
+			_start_rewind()
+	else:
+		if rewinding:
+			_stop_rewind()
+
+	if rewinding:
+		#Engine.time_scale = 0.4   
+		_rewind(delta)
+		return
+	else:
+		#Engine.time_scale = 1.0
+		_record_state()
+
+	# --- Contrôles (inchangés) ---
 	var accelerating := false
 
 	if Input.is_action_pressed("ui_right"):
@@ -61,7 +134,7 @@ func _physics_process(delta: float) -> void:
 			if w.angular_velocity > -max_speed:
 				w.apply_torque_impulse(-speed * s)
 
-	# 🔊 --- SON MOTEUR ---
+	# --- Son moteurr ---
 	if accelerating:
 		if not vroom.playing:
 			vroom.play()
@@ -75,9 +148,9 @@ func _physics_process(delta: float) -> void:
 	if global_position.y > fall_limit_y:
 		_respawn()
 
+	# Vitesse HUD
 	var speed_mps = linear_velocity.length()
 	var speed_kmh = speed_mps * 0.03
-
 	if hud:
 		var speedometer = hud.get_node("Speedometer")
 		speedometer.update_speed(speed_kmh)
@@ -93,3 +166,5 @@ func _respawn() -> void:
 	global_rotation = spawn_rotation
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0
+	buffer.clear()
+	_stop_rewind()

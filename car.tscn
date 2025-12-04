@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0ns8oq0gf3g8"]
+[gd_scene load_steps=9 format=3 uid="uid://d0ns8oq0gf3g8"]
 
 [ext_resource type="Script" uid="uid://cnlfujplt528x" path="res://car.gd" id="1_uoj53"]
 [ext_resource type="PackedScene" uid="uid://bky3sshspxh7b" path="res://wheel.tscn" id="2_06lh1"]
 [ext_resource type="Texture2D" uid="uid://cirb3kn02pl3i" path="res://texture/Dune_buggy_no_ruote_bianca-removebg-preview.png" id="3_k61xc"]
 [ext_resource type="Script" uid="uid://bml0ioxyfxwrr" path="res://roof_detector.gd" id="4_06lh1"]
 [ext_resource type="AudioStream" uid="uid://f83lbsejfrb6" path="res://sound/motor-loop-3-83478.mp3" id="5_td361"]
+[ext_resource type="AudioStream" uid="uid://uylyxexkb1rb" path="res://Audio/dj-rewind-sound-effects-1.mp3" id="6_72krn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uoj53"]
 bounce = 0.37
@@ -55,3 +56,6 @@ shape = SubResource("RectangleShape2D_k61xc")
 [node name="Vroom" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_td361")
 volume_db = -16.33
+
+[node name="RewindSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_72krn")

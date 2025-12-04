@@ -15,7 +15,4 @@ func _on_body_entered(body: Node) -> void:
 	if not body.is_in_group("car"):
 		return
 
-	if next_scene_path == "":
-		push_warning("next_scene_path n'est pas défini pour LevelEnd !")
-		return
 	get_tree().change_scene_to_file(next_scene_path)

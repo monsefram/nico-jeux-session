@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://3i2ppibtlvco"]
+[gd_scene load_steps=27 format=3 uid="uid://3i2ppibtlvco"]
 
 [ext_resource type="Texture2D" uid="uid://bu2wjljj1kfdh" path="res://texture/Blue_Neon.png" id="1_7j8ne"]
 [ext_resource type="Texture2D" uid="uid://dievtd61oym7h" path="res://texture/neon city free/spr_neon_city_free_8.png" id="1_wvr33"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bu576t1fx72j0" path="res://texture/Gold/Gold_21.png" id="15_jcnlr"]
 [ext_resource type="Texture2D" uid="uid://bk3copskri10y" path="res://texture/flag animation.png" id="16_lvfll"]
 [ext_resource type="PackedScene" uid="uid://cus8e3g0lqk4y" path="res://pause_menu.tscn" id="17_lvfll"]
+[ext_resource type="PackedScene" uid="uid://dcp2drkt0uqpc" path="res://debug_overlay.tscn" id="19_5kfcu"]
 [ext_resource type="PackedScene" uid="uid://d15f5u8g85ipf" path="res://sound_manager.tscn" id="22_wvr33"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jcnlr"]
@@ -69,7 +70,7 @@ animations = [{
 [node name="level2" type="Node2D"]
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(960, -330)
+position = Vector2(960, -220)
 
 [node name="Parallax2D" type="Parallax2D" parent="Node2D"]
 scale = Vector2(5, 5)
@@ -220,3 +221,5 @@ frame_progress = 0.066379
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("17_lvfll")]
+
+[node name="DebugOverlay" parent="." instance=ExtResource("19_5kfcu")]
