@@ -38,7 +38,7 @@ La voiture réagit donc :
 - Documentation officielle Godot 4 (PhysicsBody2D, RigidBody2D).
 - Notes de cours sur la physique 2D.
 
-![alt text](image-1.png)
+![alt text](pics/image-1.png)
 
 ---
 
@@ -174,9 +174,9 @@ Le jeu contient un menu d’options qui sert d’aide intégrée. On peut y retr
 
 L’aide n’est pas dans le menu principal, mais bien dans un sous-menu dédié, comme demandé dans l’énoncé.
 
-![alt text](image-2.png)
+![alt text](pics/image-2.png)
 
-![alt text](image-3.png)
+![alt text](pics/image-3.png)
 
 ---
 
