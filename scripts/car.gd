@@ -48,6 +48,8 @@ func _ready() -> void:
 	spawn_rotation = global_rotation
 	_set_spawn_from_scene()
 
+	StateMachine.set_state(StateMachine.STATE_NORMAL)
+
 
 
 # ---- Enregistrer l'état ----
@@ -69,7 +71,6 @@ func _rewind(delta):
 		return
 
 	var state = buffer.pop_back()
-
 	global_position = state["pos"]
 	global_rotation = state["rot"]
 	linear_velocity = state["vel"]
@@ -83,7 +84,7 @@ func _start_rewind():
 	rewinding = true
 	rewind_cooldown = rewind_delay
 
-
+	StateMachine.set_state(StateMachine.STATE_REWIND)
 
 	if rewind_fx:
 		rewind_fx.play()
@@ -91,6 +92,7 @@ func _start_rewind():
 
 func _stop_rewind():
 	rewinding = false
+	StateMachine.set_state(StateMachine.STATE_NORMAL)
 
 
 
@@ -102,20 +104,20 @@ func _physics_process(delta: float) -> void:
 		rewind_cooldown -= delta
 
 	# --- Activation du rewind ---
-	if Input.is_action_pressed("back"):  
+	if Input.is_action_pressed("back"):
 		if not rewinding:
 			_start_rewind()
 	else:
 		if rewinding:
 			_stop_rewind()
 
-	if rewinding:
-		#Engine.time_scale = 0.4   
+	# --- Mode rewind avec machine à état ---
+	if StateMachine.is_state(StateMachine.STATE_REWIND):
 		_rewind(delta)
 		return
 	else:
-		#Engine.time_scale = 1.0
 		_record_state()
+
 
 	# --- Contrôles (inchangés) ---
 	var accelerating := false
@@ -134,7 +136,7 @@ func _physics_process(delta: float) -> void:
 			if w.angular_velocity > -max_speed:
 				w.apply_torque_impulse(-speed * s)
 
-	# --- Son moteurr ---
+	# --- Son moteur ---
 	if accelerating:
 		if not vroom.playing:
 			vroom.play()
@@ -156,15 +158,14 @@ func _physics_process(delta: float) -> void:
 		speedometer.update_speed(speed_kmh)
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept") or Input.is_key_pressed(KEY_R):
-		_respawn()
-
 
 func _respawn() -> void:
 	global_position = spawn_position
 	global_rotation = spawn_rotation
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0
+
 	buffer.clear()
 	_stop_rewind()
+
+	StateMachine.set_state(StateMachine.STATE_NORMAL)

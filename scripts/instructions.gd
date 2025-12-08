@@ -1,8 +1,5 @@
 extends Control
 
-func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
 
 func _process(delta: float) -> void:
 	var mouse_speed = 400
@@ -27,7 +24,6 @@ func _process(delta: float) -> void:
 
 	Input.warp_mouse(mouse_pos)
 
-
 func _unhandled_input(event: InputEvent) -> void:
 	# Ici tu déclenches le "clic" avec une action (Enter / bouton manette)
 	if Input.is_action_just_pressed("ui_accept"):
@@ -49,11 +45,6 @@ func _fake_mouse_click() -> void:
 	Input.parse_input_event(ev_up)
 
 
-func _on_startbtn_button_down() -> void:
-	get_tree().change_scene_to_file("res://levels.tscn")
 
-func _on_quitbtn_button_down() -> void:
-	get_tree().quit()
-
-func _on_instrubtn_pressed() -> void:
-	get_tree().change_scene_to_file("res://instructions.tscn")
+func _on_back_button_down() -> void:
+	get_tree().change_scene_to_file("res://menu_principal.tscn")

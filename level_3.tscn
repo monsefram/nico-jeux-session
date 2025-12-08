@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://b54j1vgvhucew"]
+[gd_scene load_steps=31 format=3 uid="uid://b54j1vgvhucew"]
 
 [ext_resource type="Texture2D" uid="uid://dievtd61oym7h" path="res://texture/neon city free/spr_neon_city_free_8.png" id="1_4hpui"]
+[ext_resource type="Script" uid="uid://d2u2218ty580j" path="res://scripts/level_3.gd" id="1_g005c"]
 [ext_resource type="Texture2D" uid="uid://bsvrejcyuax2e" path="res://texture/neon city free/spr_neon_city_free_7.png" id="2_g005c"]
 [ext_resource type="Texture2D" uid="uid://db23thflafiwa" path="res://texture/neon city free/spr_neon_city_free_6.png" id="3_dhf26"]
 [ext_resource type="Texture2D" uid="uid://4uuq7enkpvwp" path="res://texture/neon city free/spr_neon_city_free_5.png" id="4_ox7xt"]
@@ -71,9 +72,10 @@ animations = [{
 }]
 
 [node name="level3" type="Node2D"]
+script = ExtResource("1_g005c")
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(960, -330)
+position = Vector2(960, -122)
 
 [node name="Parallax2D" type="Parallax2D" parent="Node2D"]
 scale = Vector2(5, 5)

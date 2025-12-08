@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://s3ef4dtrqadp"]
+[gd_scene load_steps=31 format=3 uid="uid://s3ef4dtrqadp"]
 
+[ext_resource type="Script" uid="uid://k647oqpsejbg" path="res://scripts/main.gd" id="1_d13ii"]
 [ext_resource type="PackedScene" uid="uid://d0ns8oq0gf3g8" path="res://car.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dievtd61oym7h" path="res://texture/neon city free/spr_neon_city_free_8.png" id="1_ryguw"]
 [ext_resource type="Texture2D" uid="uid://bsvrejcyuax2e" path="res://texture/neon city free/spr_neon_city_free_7.png" id="2_d13ii"]
@@ -71,6 +72,7 @@ animations = [{
 }]
 
 [node name="Main" type="Node2D" groups=["wheel"]]
+script = ExtResource("1_d13ii")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(960, 350)

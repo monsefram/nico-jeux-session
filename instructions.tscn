@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://j6husl0m0no5"]
+
+[ext_resource type="Script" uid="uid://b6mc6sn3kkdy2" path="res://scripts/instructions.gd" id="1_ne5nb"]
+[ext_resource type="Texture2D" uid="uid://bsyn6lkw5ptli" path="res://texture/neon_beach.png" id="2_jh4dl"]
+[ext_resource type="FontFile" uid="uid://dbtagcaaddp6h" path="res://texture/Font/Kenney Future.ttf" id="3_gosh8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x7udj"]
+font = ExtResource("3_gosh8")
+font_size = 50
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 10)
+
+[node name="Instructions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ne5nb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.08519
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jh4dl")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Titre" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.5
+offset_top = -332.0
+offset_right = 224.5
+offset_bottom = -242.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/shadow_offset_y = 20
+text = "INSTRUCTIONS"
+label_settings = SubResource("LabelSettings_x7udj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -389.0
+offset_top = -201.5
+offset_right = 389.0
+offset_bottom = 201.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "But du jeu : aller jusqu'au drapeau sans se retourner
+Joystick vers la droite pour avancer 
+Joystick vers la gauche pour reculer
+A pour pause
+B pour ENTER
+Y pour FLASHBACK
+L1 pour GEEKMODE
+START pour quitter "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 237.0
+offset_right = 150.0
+offset_bottom = 477.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Back"
+
+[connection signal="button_down" from="VBoxContainer/back" to="." method="_on_back_button_down"]

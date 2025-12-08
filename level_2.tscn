@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://3i2ppibtlvco"]
+[gd_scene load_steps=31 format=3 uid="uid://3i2ppibtlvco"]
 
 [ext_resource type="Texture2D" uid="uid://bu2wjljj1kfdh" path="res://texture/Blue_Neon.png" id="1_7j8ne"]
+[ext_resource type="Script" uid="uid://oas5na2dqv8w" path="res://scripts/level_2.gd" id="1_sgm4o"]
 [ext_resource type="Texture2D" uid="uid://dievtd61oym7h" path="res://texture/neon city free/spr_neon_city_free_8.png" id="1_wvr33"]
 [ext_resource type="Texture2D" uid="uid://bsvrejcyuax2e" path="res://texture/neon city free/spr_neon_city_free_7.png" id="2_sgm4o"]
 [ext_resource type="Texture2D" uid="uid://db23thflafiwa" path="res://texture/neon city free/spr_neon_city_free_6.png" id="3_6r3eb"]
@@ -71,6 +72,7 @@ animations = [{
 }]
 
 [node name="level2" type="Node2D"]
+script = ExtResource("1_sgm4o")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(960, -220)

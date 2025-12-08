@@ -38,13 +38,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -259.0
-offset_top = -162.0
+offset_top = -299.5
 offset_right = 260.0
-offset_bottom = -72.0
+offset_bottom = -122.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/shadow_offset_y = 20
-text = "MENU PRINCIPAL"
+text = "   HyperClimb
+
+
+MENU PRINCIPAL"
 label_settings = SubResource("LabelSettings_x7udj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -64,12 +67,21 @@ grow_vertical = 2
 [node name="Startbtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
+action_mode = 0
 text = "START"
+
+[node name="Instrubtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+action_mode = 0
+text = "INSTRUCTIONS"
 
 [node name="Quitbtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
+action_mode = 0
 text = "QUIT"
 
 [connection signal="button_down" from="VBoxContainer/Startbtn" to="." method="_on_startbtn_button_down"]
+[connection signal="pressed" from="VBoxContainer/Instrubtn" to="." method="_on_instrubtn_pressed"]
 [connection signal="button_down" from="VBoxContainer/Quitbtn" to="." method="_on_quitbtn_button_down"]
