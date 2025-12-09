@@ -6,11 +6,11 @@ extends Control
 
 
 
+
 func _ready():
 	$AnimationPlayer.play("RESET")
 	main_button.visible = true
 	settings.visible = false
-
 
 
 func resume():
